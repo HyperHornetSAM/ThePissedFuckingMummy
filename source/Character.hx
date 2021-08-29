@@ -95,7 +95,6 @@ class Character extends FlxSprite
 				flipX = true;
 			
 			case 'mummy':
-					// DAD ANIMATION LOADING CODE
 				tex = Paths.getSparrowAtlas('mummy','shared',true);
 				frames = tex;
 				animation.addByPrefix('idle', 'Izotope Idle', 24, false);
