@@ -41,7 +41,12 @@ class HealthIcon extends FlxSprite
 		if (char != 'bf-pixel' && char != 'bf-old')
 			char = char.split("-")[0];
 
-		loadGraphic(Paths.image('icons/icon-' + char), true, 150, 150);
+		if(char == 'mummy'){
+			loadGraphic(Paths.image('icons/icon-' + char), true, 130, 150);
+		}
+		else{
+			loadGraphic(Paths.image('icons/icon-' + char), true, 150, 150);
+		}
 		if(char.endsWith('-pixel') || char.startsWith('senpai') || char.startsWith('spirit'))
 			antialiasing = false
 		else
