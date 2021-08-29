@@ -131,10 +131,10 @@ class TitleState extends MusicBeatState
 		add(bg);
 
 		if (Main.watermarks) {
-			logoBl = new FlxSprite(-150, 1500);
+			logoBl = new FlxSprite(400, -1000);
 			logoBl.frames = Paths.getSparrowAtlas('Izotope start screen text');
 		} else {
-			logoBl = new FlxSprite(-150, -100);
+			logoBl = new FlxSprite(400, -1000);
 			logoBl.frames = Paths.getSparrowAtlas('Izotope start screen text');
 		}
 		logoBl.antialiasing = FlxG.save.data.antialiasing;
@@ -143,10 +143,13 @@ class TitleState extends MusicBeatState
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
-		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
+		//gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
+		gfDance = new FlxSprite(-200, -350);
 		gfDance.frames = Paths.getSparrowAtlas('Izotope start screen');
-		gfDance.animation.addByIndices('danceLeft', 'Full Izotope instance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'Full Izotope instance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		//gfDance.animation.addByIndices('danceLeft', 'Full Izotope instance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		//gfDance.animation.addByIndices('danceRight', 'Full Izotope instance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		gfDance.animation.addByPrefix('danceLeft', 'Full Izotope instance', 24, false);
+		gfDance.animation.addByPrefix('danceRight', 'Full Izotope instance', 24, false);
 		gfDance.antialiasing = FlxG.save.data.antialiasing;
 		add(gfDance);
 		add(logoBl);
@@ -452,7 +455,7 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 
-			FlxTween.tween(logoBl,{y: -100}, 1.4, {ease: FlxEase.expoInOut});
+			FlxTween.tween(logoBl,{y: 0}, 1.4, {ease: FlxEase.expoInOut});
 
 			logoBl.angle = -4;
 
