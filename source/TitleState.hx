@@ -46,6 +46,8 @@ class TitleState extends MusicBeatState
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
+	
+	var noKade:Bool = true;
 
 	var curWacky:Array<String> = [];
 
@@ -131,10 +133,10 @@ class TitleState extends MusicBeatState
 		add(bg);
 
 		if (Main.watermarks) {
-			logoBl = new FlxSprite(400, -1000);
+			logoBl = new FlxSprite(450, 1000);
 			logoBl.frames = Paths.getSparrowAtlas('Izotope start screen text');
 		} else {
-			logoBl = new FlxSprite(400, -1000);
+			logoBl = new FlxSprite(450, 1000);
 			logoBl.frames = Paths.getSparrowAtlas('Izotope start screen text');
 		}
 		logoBl.antialiasing = FlxG.save.data.antialiasing;
@@ -154,7 +156,7 @@ class TitleState extends MusicBeatState
 		add(gfDance);
 		add(logoBl);
 
-		titleText = new FlxSprite(100, FlxG.height * 0.8);
+		/*titleText = new FlxSprite(100, FlxG.height * 0.8);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
 		titleText.animation.addByPrefix('idle', "Press Enter to Begin", 24);
 		titleText.animation.addByPrefix('press', "ENTER PRESSED", 24);
@@ -162,7 +164,7 @@ class TitleState extends MusicBeatState
 		titleText.animation.play('idle');
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
-		add(titleText);
+		add(titleText);*/
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('logo'));
 		logo.screenCenter();
@@ -281,8 +283,8 @@ class TitleState extends MusicBeatState
 				NGio.unlockMedal(61034);
 			#end
 
-			if (FlxG.save.data.flashing)
-				titleText.animation.play('press');
+			/*if (FlxG.save.data.flashing)
+				titleText.animation.play('press');*/
 
 			FlxG.camera.flash(FlxColor.WHITE, 1);
 			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
@@ -304,7 +306,7 @@ class TitleState extends MusicBeatState
 				{
 					returnedData[0] = data.substring(0, data.indexOf(';'));
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
+				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && noKade == false)
 					{
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
 						OutdatedSubState.needVer = returnedData[0];
@@ -455,7 +457,7 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 
-			FlxTween.tween(logoBl,{y: 0}, 1.4, {ease: FlxEase.expoInOut});
+			FlxTween.tween(logoBl,{y: 170}, 1.4, {ease: FlxEase.expoInOut});
 
 			logoBl.angle = -4;
 
