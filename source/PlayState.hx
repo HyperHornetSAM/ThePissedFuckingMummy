@@ -506,8 +506,9 @@ class PlayState extends MusicBeatState
 			{
 				case 'crypt':
 					{
+						defaultCamZoom = 0.6;
 						curStage = 'crypt';
-						var crypt:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
+						var crypt:FlxSprite = new FlxSprite(-600, -300).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
 						crypt.scrollFactor.set(0.3, 0.3);
 						crypt.antialiasing = FlxG.save.data.antialiasing;
 						add(crypt);
@@ -857,6 +858,25 @@ class PlayState extends MusicBeatState
 							add(waveSprite);
 							add(waveSpriteFG);
 						 */
+
+					}
+					case 'crypt':
+					{
+						defaultCamZoom = 0.3;
+						curStage = 'crypt';
+						var bg:FlxSprite = new FlxSprite(-900, -200).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
+						bg.antialiasing = FlxG.save.data.antialiasing;
+						bg.scrollFactor.set(0.9, 0.9);
+						bg.active = false;
+						add(bg);
+
+						var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('bg/torch', 'shared'));
+						stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
+						stageFront.updateHitbox();
+						stageFront.antialiasing = FlxG.save.data.antialiasing;
+						stageFront.scrollFactor.set(0.9, 0.9);
+						stageFront.active = false;
+						add(stageFront);
 					}
 				default:
 					{
@@ -1008,6 +1028,9 @@ class PlayState extends MusicBeatState
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+
+			case 'crypt':
+				gf.y += 50;
 		}
 
 		if (!PlayStateChangeables.Optimize)
