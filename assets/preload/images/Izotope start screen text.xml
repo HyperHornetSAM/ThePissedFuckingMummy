@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Izotope start screen text.png">
+	<!-- Created with Adobe Animate version 21.0.8.42666 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Full text instance 10000" x="0" y="0" width="813" height="573" frameX="-10" frameY="-6" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10001" x="823" y="0" width="832" height="585"/>
+	<SubTexture name="Full text instance 10002" x="823" y="0" width="832" height="585"/>
+	<SubTexture name="Full text instance 10003" x="0" y="0" width="813" height="573" frameX="-10" frameY="-6" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10004" x="0" y="0" width="813" height="573" frameX="-10" frameY="-6" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10005" x="0" y="0" width="813" height="573" frameX="-10" frameY="-6" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10006" x="0" y="595" width="759" height="532" frameX="-37" frameY="-27" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10007" x="0" y="595" width="759" height="532" frameX="-37" frameY="-27" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10008" x="769" y="595" width="744" height="523" frameX="-44" frameY="-31" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10009" x="769" y="595" width="744" height="523" frameX="-44" frameY="-31" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10010" x="769" y="595" width="744" height="523" frameX="-44" frameY="-31" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10011" x="769" y="595" width="744" height="523" frameX="-44" frameY="-31" frameWidth="832" frameHeight="585"/>
+	<SubTexture name="Full text instance 10012" x="769" y="595" width="744" height="523" frameX="-44" frameY="-31" frameWidth="832" frameHeight="585"/>
+</TextureAtlas>

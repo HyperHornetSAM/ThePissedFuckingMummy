@@ -214,6 +214,7 @@ class PlayState extends MusicBeatState
 	var fastCar:FlxSprite;
 	var songName:FlxText;
 	var upperBoppers:FlxSprite;
+	var torch_1:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
 
@@ -503,6 +504,26 @@ class PlayState extends MusicBeatState
 		{
 			switch (stageCheck)
 			{
+				case 'crypt':
+					{
+						curStage = 'crypt';
+						var crypt:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
+						crypt.scrollFactor.set(0.3, 0.3);
+						crypt.antialiasing = FlxG.save.data.antialiasing;
+						add(crypt);
+						
+						torch_1 = new FlxSprite(0, 0);
+						torch_1.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
+						torch_1.animation.addByPrefix('torchanim', "torch", 24, false);
+						torch_1.antialiasing = FlxG.save.data.antialiasing;
+						torch_1.scrollFactor.set(0.3, 0.3);
+						//torch_1.setGraphicSize(Std.int(utorch_1.width * 0.85));
+						//torch_1.updateHitbox();
+						if (FlxG.save.data.distractions)
+						{
+							add(torch_1);
+						}
+					}
 				case 'halloween':
 					{
 						curStage = 'spooky';
@@ -4652,6 +4673,10 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'crypt':
+				{
+					torch_1.animation.play('torchanim', true);
+				}
 			case 'school':
 				if (FlxG.save.data.distractions)
 				{

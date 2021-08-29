@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="torch.png">
+	<!-- Created by OneilR -->
+	<!-- https://oneilr.newgrounds.com/ -->
+	<SubTexture name="torch00000" x="0" y="0" width="200" height="300"/>
+	<SubTexture name="torch00001" x="0" y="0" width="200" height="300"/>	
+	<SubTexture name="torch00002" x="200" y="0" width="200" height="300"/>
+	<SubTexture name="torch00003" x="200" y="0" width="200" height="300"/>	
+	<SubTexture name="torch00004" x="400" y="0" width="200" height="300"/>
+	<SubTexture name="torch00005" x="400" y="0" width="200" height="300"/>	
+	<SubTexture name="torch00006" x="600" y="0" width="200" height="300"/>
+	<SubTexture name="torch00007" x="600" y="0" width="200" height="300"/>	
+	<SubTexture name="torch00008" x="800" y="0" width="200" height="300"/>
+	<SubTexture name="torch00009" x="800" y="0" width="200" height="300"/>	
+</TextureAtlas>

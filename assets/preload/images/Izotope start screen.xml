@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Izotope start screen.png">
+	<!-- Created with Adobe Animate version 21.0.8.42666 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Full Izotope instance 10000" x="0" y="0" width="1358" height="1209" frameX="-9" frameY="-17" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10001" x="1368" y="0" width="1247" height="891" frameX="-1" frameY="-335" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10002" x="2625" y="0" width="1369" height="1205" frameX="0" frameY="-21" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10003" x="4004" y="0" width="1405" height="1206" frameX="-1" frameY="-20" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10004" x="5419" y="0" width="1360" height="1209" frameX="-9" frameY="-17" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10005" x="6789" y="0" width="1226" height="899" frameX="-11" frameY="-327" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10006" x="0" y="1219" width="1229" height="899" frameX="-6" frameY="-327" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10007" x="1239" y="1219" width="1398" height="1212" frameX="-8" frameY="-14" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10008" x="2647" y="1219" width="1343" height="1225" frameX="-17" frameY="-1" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10009" x="4000" y="1219" width="1209" height="914" frameX="-19" frameY="-312" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10010" x="5219" y="1219" width="1344" height="1221" frameX="-17" frameY="-5" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10011" x="6573" y="1219" width="1209" height="912" frameX="-19" frameY="-314" frameWidth="1406" frameHeight="1226"/>
+	<SubTexture name="Full Izotope instance 10012" x="0" y="2454" width="1340" height="1225" frameX="-17" frameY="-1" frameWidth="1406" frameHeight="1226"/>
+</TextureAtlas>
