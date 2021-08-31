@@ -242,6 +242,12 @@ class PlayState extends MusicBeatState
 	var funneEffect:FlxSprite;
 	var inCutscene:Bool = false;
 	var usedTimeTravel:Bool = false;
+	
+	//pissed off mummy variables begin here
+
+	public var mummy_gone:FlxSprite = new FlxSprite();
+	
+	//pissed off mummy variable end here
 
 	public static var repPresses:Int = 0;
 	public static var repReleases:Int = 0;
@@ -506,10 +512,10 @@ class PlayState extends MusicBeatState
 			{
 				case 'crypt':
 					{
-						defaultCamZoom = 0.6;
+						defaultCamZoom = 0.9;
 						curStage = 'crypt';
-						var crypt:FlxSprite = new FlxSprite(-600, -300).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
-						crypt.scrollFactor.set(0.3, 0.3);
+						var crypt:FlxSprite = new FlxSprite(-900, -200).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
+						crypt.scrollFactor.set(0.9, 0.9);
 						crypt.antialiasing = FlxG.save.data.antialiasing;
 						add(crypt);
 						
@@ -517,13 +523,18 @@ class PlayState extends MusicBeatState
 						torch_1.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
 						torch_1.animation.addByPrefix('torchanim', "torch", 24, false);
 						torch_1.antialiasing = FlxG.save.data.antialiasing;
-						torch_1.scrollFactor.set(0.3, 0.3);
+						torch_1.scrollFactor.set(0.9, 0.9);
 						//torch_1.setGraphicSize(Std.int(utorch_1.width * 0.85));
 						//torch_1.updateHitbox();
 						if (FlxG.save.data.distractions)
 						{
 							add(torch_1);
 						}
+						
+						var vanish_frames = Paths.getSparrowAtlas('characters/Izotope Vanish', 'shared');
+						mummy_gone.frames = vanish_frames;
+						mummy_gone.animation.addByPrefix('vanish','Full Vanish instance', 24, false);
+						mummy_gone.antialiasing = true;
 					}
 				case 'halloween':
 					{
@@ -860,7 +871,7 @@ class PlayState extends MusicBeatState
 						 */
 
 					}
-					case 'crypt':
+					/*case 'crypt':
 					{
 						defaultCamZoom = 0.3;
 						curStage = 'crypt';
@@ -877,7 +888,7 @@ class PlayState extends MusicBeatState
 						stageFront.scrollFactor.set(0.9, 0.9);
 						stageFront.active = false;
 						add(stageFront);
-					}
+					}*/
 				default:
 					{
 						defaultCamZoom = 0.9;
@@ -973,6 +984,7 @@ class PlayState extends MusicBeatState
 				dad.x -= 500;
 			case 'mummy':
 				dad.y += 350;
+				//dad.alpha = 0.2;
 			case 'senpai':
 				dad.x += 150;
 				dad.y += 360;
@@ -1033,6 +1045,8 @@ class PlayState extends MusicBeatState
 
 			case 'crypt':
 				gf.y += 50;
+				dad.y += 50;
+				boyfriend.y += 50;
 		}
 
 		if (!PlayStateChangeables.Optimize)
@@ -4559,6 +4573,15 @@ class PlayState extends MusicBeatState
 		gf.playAnim('scared', true);
 	}
 
+	function izotopeVanish():Void
+	{
+		trace("Bye bye izotope!");
+		mummy_gone.setPosition(dad.x - 250,dad.y - 250);
+		remove(dad);
+		add(mummy_gone);
+		mummy_gone.animation.play('vanish');
+	}
+	
 	var danced:Bool = false;
 
 	override function stepHit()
@@ -4695,7 +4718,13 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 			dad.playAnim('cheer', true);
 		}
-
+		if (curSong == 'Midlifetantrum')
+		{
+			switch(curBeat)
+			{
+				case 290: izotopeVanish();
+			}
+		}
 		switch (curStage)
 		{
 			case 'crypt':
