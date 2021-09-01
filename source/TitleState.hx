@@ -341,46 +341,50 @@ class TitleState extends MusicBeatState
 	}
 
 	function createCoolText(textArray:Array<String>)
-	{
-		for (i in 0...textArray.length)
 		{
-			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
-			money.screenCenter(X);
-			money.y += (i * 60) + 200;
-			credGroup.add(money);
-			textGroup.add(money);
+			for (i in 0...textArray.length)
+			{
+				var money:FlxText = new FlxText(0, 0, 0, textArray[i], 64);
+				money.font = Paths.font('HollowMummyDisplayPersonalUse-YzAJo.otf');
+				money.screenCenter(X);
+				money.y += (i * 60) + 250;
+				credGroup.add(money);
+				textGroup.add(money);
+			}
 		}
-	}
 	
-	function createCoolCreditsText(textArray:Array<String>)
-	{
-		for (i in 0...textArray.length)
+		function addMoreText(text:String)
 		{
-			var money:Alphabet = new Alphabet(0, 0, textArray[i], true, false);
-			money.screenCenter(X);
-			money.y += (i * 60) + 100;
-			credGroup.add(money);
-			textGroup.add(money);
+			var coolText:FlxText = new FlxText(0, 0, 0, text, 64);
+			coolText.font = Paths.font('HollowMummyDisplayPersonalUse-YzAJo.otf');
+			coolText.screenCenter(X);
+			coolText.y += (textGroup.length * 60) + 250;
+			credGroup.add(coolText);
+			textGroup.add(coolText);
 		}
-	}
-
-	function addMoreText(text:String)
-	{
-		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
-		coolText.screenCenter(X);
-		coolText.y += (textGroup.length * 60) + 200;
-		credGroup.add(coolText);
-		textGroup.add(coolText);
-	}
 	
-	function addPresentText(text:String)
-	{
-		var coolText:Alphabet = new Alphabet(0, 0, text, true, false);
-		coolText.screenCenter(X);
-		coolText.y += (textGroup.length * 60) + 100;
-		credGroup.add(coolText);
-		textGroup.add(coolText);
-	}
+		function createCoolCreditsText(textArray:Array<String>)
+			{
+				for (i in 0...textArray.length)
+				{
+					var money:FlxText = new FlxText(0, 0, 0, textArray[i], 64);
+					money.font = Paths.font('HollowMummyDisplayPersonalUse-YzAJo.otf');
+					money.screenCenter(X);
+					money.y += (i * 60) + 100; // this is where you set the height for the title credits
+					credGroup.add(money);
+					textGroup.add(money);
+				}
+			}
+		
+			function addPresentText(text:String)
+			{
+				var coolText:FlxText = new FlxText(0, 0, 0, text, 64);
+				coolText.font = Paths.font('HollowMummyDisplayPersonalUse-YzAJo.otf');
+				coolText.screenCenter(X);
+				coolText.y += (textGroup.length * 60) + 100; // this is where you set the height for the title credits
+				credGroup.add(coolText);
+				textGroup.add(coolText);
+			}
 
 	function deleteCoolText()
 	{
@@ -410,10 +414,10 @@ class TitleState extends MusicBeatState
 			case 0:
 				deleteCoolText();
 			case 1:
-				createCoolCreditsText(['Banbuds', 'Anthem', 'EJ', 'Fidy', 'HyperSAM', 'Jacaris', 'OneilR', 'VanillaPuddingo']);
+				createCoolCreditsText(['BANBUDS', 'ANTHEM OVERLOAD', 'DEAD SKULLXX', 'FIDY', 'HYPERSAM', 'JACARIS', 'ONEILR', 'VANILLAPUDDINGO']);
 			// credTextShit.visible = true;
 			case 3:
-				addPresentText('present');
+				addPresentText('PRESENT');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
@@ -423,15 +427,15 @@ class TitleState extends MusicBeatState
 			// credTextShit.screenCenter();
 			case 5:
 				if (Main.watermarks)
-					createCoolText(['For Funk Jam', 'by']);
+					createCoolText(['FOR FUNK JAM', 'BY']);
 				else
-					createCoolText(['In Partnership', 'with']);
+					createCoolText(['IN PATNERSHIP', 'WITH']);
 			case 7:
 				if (Main.watermarks)
-					addMoreText('Funkin Forward');
+					addMoreText('FUNKIN FORWARD');
 				else
 				{
-					addMoreText('Newgrounds');
+					addMoreText('NEWGROUNDS');
 					ngSpr.visible = true;
 				}
 			// credTextShit.text += '\nNewgrounds';
@@ -454,13 +458,13 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Oh shit');
+				addMoreText('OH SHIT');
 			// credTextShit.visible = true;
 			case 14:
-				addMoreText('here');
+				addMoreText('HERE');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('comes'); // credTextShit.text += '\nFunkin';
+				addMoreText('COMES'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
