@@ -27,7 +27,7 @@ class StoryMenuState extends MusicBeatState
 	static function weekData():Array<Dynamic>
 	{
 		return [
-			['Hieroglyphicasshole','Pharoh-Fury', 'Midlifetantrum']
+			['Hieroglyphic-Asshole','Pharoh-Fury', 'Midlife-Tantrum']
 		];
 	}
 	var curDifficulty:Int = 1;
@@ -35,7 +35,7 @@ class StoryMenuState extends MusicBeatState
 	public static var weekUnlocked:Array<Bool> = [true];
 
 	var weekCharacters:Array<Dynamic> = [
-		['dad', 'bf', 'gf']
+		['mummy', 'bf', 'gf']
 	];
 
 	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/weekNames'));
@@ -111,7 +111,7 @@ class StoryMenuState extends MusicBeatState
 		rankText.screenCenter(X);
 
 		var ui_tex = Paths.getSparrowAtlas('campaign_menu_UI_assets');
-		var yellowBG:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFFF9CF51);
+		var yellowBG:FlxSprite = new FlxSprite(0, 56).makeGraphic(FlxG.width, 400, 0xFF9A7B4F);
 
 		grpWeekText = new FlxTypedGroup<MenuItem>();
 		add(grpWeekText);
@@ -360,10 +360,24 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = Song.conversionChecks(Song.loadFromJson(poop, PlayState.storyPlaylist[0]));
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
-			new FlxTimer().start(1, function(tmr:FlxTimer)
+			var isCutscene:Bool = false;
+			var video:MP4Handler = new MP4Handler();
+
+			if (curWeek == 0 && !isCutscene) // Checks if the current week is Tutorial.
 			{
-				LoadingState.loadAndSwitchState(new PlayState(), true);
-			});
+				video.playMP4(Paths.video('izotopeIntro'), new PlayState()); 
+				isCutscene = true;
+			}
+			else
+			{
+				new FlxTimer().start(1, function(tmr:FlxTimer)
+				{
+					if (isCutscene)
+						video.onVLCComplete();
+
+					LoadingState.loadAndSwitchState(new PlayState(), true);
+				});
+			}
 		}
 	}
 

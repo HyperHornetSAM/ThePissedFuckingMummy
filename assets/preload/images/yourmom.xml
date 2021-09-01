@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="yourmom.png">
+
+	<SubTexture name="loading0000" x="0" y="0" width="996" height="608"/>
+	<SubTexture name="loading0001" x="0" y="0" width="996" height="608"/>
+	<SubTexture name="loading0002" x="0" y="0" width="996" height="608"/>
+	<SubTexture name="loading0003" x="996" y="0" width="996" height="608"/>
+	<SubTexture name="loading0004" x="996" y="0" width="996" height="608"/>
+	<SubTexture name="loading0005" x="996" y="0" width="996" height="608"/>
+	<SubTexture name="loading0006" x="1992" y="0" width="996" height="608"/>
+	<SubTexture name="loading0007" x="1992" y="0" width="996" height="608"/>
+	<SubTexture name="loading0008" x="1992" y="0" width="996" height="608"/>
+	<SubTexture name="loading0009" x="0" y="608" width="996" height="608"/>
+	<SubTexture name="loading0010" x="0" y="608" width="996" height="608"/>
+	<SubTexture name="loading0011" x="0" y="608" width="996" height="608"/>
+	<SubTexture name="loading0012" x="996" y="608" width="996" height="608"/>
+	<SubTexture name="loading0013" x="996" y="608" width="996" height="608"/>
+	<SubTexture name="loading0014" x="996" y="608" width="996" height="608"/>
+	<SubTexture name="loading0015" x="1992" y="608" width="996" height="608"/>
+	<SubTexture name="loading0016" x="1992" y="608" width="996" height="608"/>
+	<SubTexture name="loading0017" x="1992" y="608" width="996" height="608"/>
+</TextureAtlas>

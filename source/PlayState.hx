@@ -156,7 +156,7 @@ class PlayState extends MusicBeatState
 
 	private var gfSpeed:Int = 1;
 
-	public var health:Float = 1; // making public because sethealth doesnt work without it
+	public var health:Float = 2; // making public because sethealth doesnt work without it
 
 	private var combo:Int = 0;
 
@@ -215,6 +215,9 @@ class PlayState extends MusicBeatState
 	var songName:FlxText;
 	var upperBoppers:FlxSprite;
 	var torch_1:FlxSprite;
+	var torch_2:FlxSprite;
+	var torch_3:FlxSprite;
+	var torch_4:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
 
@@ -248,6 +251,8 @@ class PlayState extends MusicBeatState
 	public var mummy_gone:FlxSprite = new FlxSprite();
 	
 	//pissed off mummy variable end here
+	
+	public var IconOffsetApplied:Bool = false;
 
 	public static var repPresses:Int = 0;
 	public static var repReleases:Int = 0;
@@ -514,12 +519,12 @@ class PlayState extends MusicBeatState
 					{
 						defaultCamZoom = 0.9;
 						curStage = 'crypt';
-						var crypt:FlxSprite = new FlxSprite(-900, -200).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
+						var crypt:FlxSprite = new FlxSprite(-800, -200).loadGraphic(Paths.image('bg/crypt_wall', 'shared'));
 						crypt.scrollFactor.set(0.9, 0.9);
 						crypt.antialiasing = FlxG.save.data.antialiasing;
 						add(crypt);
 						
-						torch_1 = new FlxSprite(0, 0);
+						torch_1 = new FlxSprite(0, 350);
 						torch_1.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
 						torch_1.animation.addByPrefix('torchanim', "torch", 24, false);
 						torch_1.antialiasing = FlxG.save.data.antialiasing;
@@ -529,6 +534,42 @@ class PlayState extends MusicBeatState
 						if (FlxG.save.data.distractions)
 						{
 							add(torch_1);
+						}
+						
+						torch_2 = new FlxSprite(400, 350);
+						torch_2.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
+						torch_2.animation.addByPrefix('torchanim', "torch", 24, false);
+						torch_2.antialiasing = FlxG.save.data.antialiasing;
+						torch_2.scrollFactor.set(0.9, 0.9);
+						//torch_2.setGraphicSize(Std.int(utorch_1.width * 0.85));
+						//torch_2.updateHitbox();
+						if (FlxG.save.data.distractions)
+						{
+							add(torch_2);
+						}
+						
+						torch_3 = new FlxSprite(800, 350);
+						torch_3.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
+						torch_3.animation.addByPrefix('torchanim', "torch", 24, false);
+						torch_3.antialiasing = FlxG.save.data.antialiasing;
+						torch_3.scrollFactor.set(0.9, 0.9);
+						//torch_3.setGraphicSize(Std.int(utorch_1.width * 0.85));
+						//torch_3.updateHitbox();
+						if (FlxG.save.data.distractions)
+						{
+							add(torch_3);
+						}
+						
+						torch_4 = new FlxSprite(1200, 350);
+						torch_4.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
+						torch_4.animation.addByPrefix('torchanim', "torch", 24, false);
+						torch_4.antialiasing = FlxG.save.data.antialiasing;
+						torch_4.scrollFactor.set(0.9, 0.9);
+						//torch_4.setGraphicSize(Std.int(utorch_1.width * 0.85));
+						//torch_4.updateHitbox();
+						if (FlxG.save.data.distractions)
+						{
+							add(torch_4);
 						}
 						
 						var vanish_frames = Paths.getSparrowAtlas('characters/Izotope Vanish', 'shared');
@@ -2519,6 +2560,14 @@ class PlayState extends MusicBeatState
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		
+		if (SONG.player2 == 'mummy'){
+			iconP2.scale.set(.95, .95);
+			if (IconOffsetApplied == false){
+				iconP2.y -= 20;
+				IconOffsetApplied = true;
+			}
+		}
 
 		if (health > 2)
 			health = 2;
@@ -3275,7 +3324,7 @@ class PlayState extends MusicBeatState
 										}
 										else
 										{
-											health -= 0.15;
+											health -= 0.2;
 										}
 									}
 								}
@@ -3326,7 +3375,7 @@ class PlayState extends MusicBeatState
 									}
 									else
 									{
-										health -= 0.15;
+										health -= 0.2;
 									}
 								}
 							}
@@ -3593,7 +3642,7 @@ class PlayState extends MusicBeatState
 				score = -300;
 				combo = 0;
 				misses++;
-				health -= 0.1;
+				health -= 0.16;
 				ss = false;
 				shits++;
 				if (FlxG.save.data.accuracyMod == 0)
@@ -3601,7 +3650,7 @@ class PlayState extends MusicBeatState
 			case 'bad':
 				daRating = 'bad';
 				score = 0;
-				health -= 0.06;
+				health -= 0.08;
 				ss = false;
 				bads++;
 				if (FlxG.save.data.accuracyMod == 0)
@@ -3614,8 +3663,10 @@ class PlayState extends MusicBeatState
 				if (FlxG.save.data.accuracyMod == 0)
 					totalNotesHit += 0.75;
 			case 'sick':
+				/* no heals for you bitch (⌐■_■)
 				if (health < 2)
 					health += 0.04;
+				*/
 				if (FlxG.save.data.accuracyMod == 0)
 					totalNotesHit += 1;
 				sicks++;
@@ -4718,7 +4769,7 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 			dad.playAnim('cheer', true);
 		}
-		if (curSong == 'Midlifetantrum')
+		if (curSong == 'Midlife-Tantrum')
 		{
 			switch(curBeat)
 			{
@@ -4730,6 +4781,9 @@ class PlayState extends MusicBeatState
 			case 'crypt':
 				{
 					torch_1.animation.play('torchanim', true);
+					torch_2.animation.play('torchanim', true);
+					torch_3.animation.play('torchanim', true);
+					torch_4.animation.play('torchanim', true);
 				}
 			case 'school':
 				if (FlxG.save.data.distractions)

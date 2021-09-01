@@ -37,6 +37,8 @@ class Caching extends MusicBeatState
 
 	var loaded = false;
 
+	var backgroundcolor = new FlxSprite();
+	var loadmummy:FlxSprite;
 	var text:FlxText;
 	var kadeLogo:FlxSprite;
 
@@ -62,11 +64,26 @@ class Caching extends MusicBeatState
 
 		bitmapData = new Map<String,FlxGraphic>();
 
+        
+		backgroundcolor.makeGraphic(2000, 2000, 0xFFBEB06B);
+		add(backgroundcolor);
+		loadmummy = new FlxSprite();
+		loadmummy.frames = Paths.getSparrowAtlas('yourmom');
+		loadmummy.animation.addByPrefix('FUCK', 'loading', 24);
+		loadmummy.antialiasing = FlxG.save.data.antialiasing;
+		loadmummy.animation.play('FUCK');
+		loadmummy.screenCenter();
+        add(loadmummy);
 		text = new FlxText(FlxG.width / 2, FlxG.height / 2 + 300,0,"Loading...");
 		text.size = 34;
+		text.color = FlxColor.BLACK;
 		text.alignment = FlxTextAlign.CENTER;
-		text.alpha = 0;
-
+		text.y = 550;
+        text.x = FlxG.width / 2 - 170;
+		add(text);
+		
+		
+		/*text.alpha = 0;
 		kadeLogo = new FlxSprite(FlxG.width / 2, FlxG.height / 2).loadGraphic(Paths.image('KadeEngineLogo'));
 		kadeLogo.x -= kadeLogo.width / 2;
 		kadeLogo.y -= kadeLogo.height / 2 + 100;
@@ -77,9 +94,10 @@ class Caching extends MusicBeatState
 			kadeLogo.antialiasing = FlxG.save.data.antialiasing;
 		else
 			kadeLogo.antialiasing = true;
-		
 		kadeLogo.alpha = 0;
-
+		*/
+		
+		
 		FlxGraphic.defaultPersist = FlxG.save.data.cacheImages;
 
 		#if cpp
@@ -105,13 +123,13 @@ class Caching extends MusicBeatState
 
 		toBeDone = Lambda.count(images) + Lambda.count(music);
 
-		var bar = new FlxBar(10,FlxG.height - 50,FlxBarFillDirection.LEFT_TO_RIGHT,FlxG.width,40,null,"done",0,toBeDone);
+		/*var bar = new FlxBar(10,FlxG.height - 50,FlxBarFillDirection.LEFT_TO_RIGHT,FlxG.width,40,null,"done",0,toBeDone);
 		bar.color = FlxColor.PURPLE;
 
 		add(bar);
 
 		add(kadeLogo);
-		add(text);
+		add(text);*/
 
 		trace('starting caching..');
 		
@@ -123,9 +141,9 @@ class Caching extends MusicBeatState
 			{
 				if (toBeDone != 0 && done != toBeDone)
 					{
-						var alpha = HelperFunctions.truncateFloat(done / toBeDone * 100,2) / 100;
+						/*var alpha = HelperFunctions.truncateFloat(done / toBeDone * 100,2) / 100;
 						kadeLogo.alpha = alpha;
-						text.alpha = alpha;
+						text.alpha = alpha;*/
 						text.text = "Loading... (" + done + "/" + toBeDone + ")";
 					}
 			}
