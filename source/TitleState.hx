@@ -410,7 +410,7 @@ class TitleState extends MusicBeatState
 			case 0:
 				deleteCoolText();
 			case 1:
-				createCoolCreditsText(['Banbuds', 'Anthem', 'EJ', 'Fidy', 'HyperSAM', 'Jacaris', 'OneilR', 'VanillaPuddingo']);
+				createCoolCreditsText(['Banbuds', 'Anthem', 'DEAD SKULLXX', 'Fidy', 'HyperSAM', 'Jacaris', 'OneilR', 'VanillaPuddingo']);
 			// credTextShit.visible = true;
 			case 3:
 				addPresentText('present');
