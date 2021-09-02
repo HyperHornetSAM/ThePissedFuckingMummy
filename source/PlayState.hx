@@ -1322,6 +1322,14 @@ class PlayState extends MusicBeatState
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
+		
+		if(curSong == "Izofunk"){
+			healthBar.alpha = 0;
+			healthBarBG.alpha = 0;
+			iconP2.alpha = 0;
+			iconP1.alpha = 0;
+			dad.alpha = .5;
+		}
 
 		strumLineNotes.cameras = [camHUD];
 		notes.cameras = [camHUD];
@@ -2002,8 +2010,16 @@ class PlayState extends MusicBeatState
 				else
 					oldNote = null;
 
-				var swagNote:Note = new Note(daStrumTime, daNoteData, oldNote);
-
+				var swagNote:Note;
+				
+				if (gottaHitNote)
+				{
+					swagNote = new Note(daStrumTime, daNoteData, oldNote);
+				}
+				else
+				{
+					swagNote = new Note(daStrumTime, daNoteData, oldNote, false, false, false, 1);
+				}
 				if (!gottaHitNote && PlayStateChangeables.Optimize)
 					continue;
 
@@ -2026,7 +2042,14 @@ class PlayState extends MusicBeatState
 				{
 					oldNote = unspawnNotes[Std.int(unspawnNotes.length - 1)];
 
-					var sustainNote:Note = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true);
+					var sustainNote:Note;
+					
+					if(gottaHitNote){
+						sustainNote = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true);
+					}
+					else{
+						sustainNote = new Note(daStrumTime + (Conductor.stepCrochet * susNote) + Conductor.stepCrochet, daNoteData, oldNote, true, false, false, 1);
+					}
 					sustainNote.scrollFactor.set();
 					unspawnNotes.push(sustainNote);
 					sustainNote.isAlt = songNotes[3];
@@ -3297,6 +3320,11 @@ class PlayState extends MusicBeatState
 									if (daNote.isParent)
 									{
 										health -= 0.15; // give a health punishment for failing a LN
+										if (curSong == "Izofunk"){
+											trace("Instakill");
+											health = 0;
+										}
+										
 										trace("hold fell over at the start");
 										for (i in daNote.children)
 										{
@@ -3312,6 +3340,10 @@ class PlayState extends MusicBeatState
 											&& daNote.spotInLine != daNote.parent.children.length)
 										{
 											health -= 0.2; // give a health punishment for failing a LN
+											if (curSong == "Izofunk"){
+												trace("Instakill");
+												health = 0;
+											}
 											trace("hold fell over at " + daNote.spotInLine);
 											for (i in daNote.parent.children)
 											{
@@ -3325,6 +3357,10 @@ class PlayState extends MusicBeatState
 										else
 										{
 											health -= 0.2;
+											if (curSong == "Izofunk"){
+												trace("Instakill");
+												health = 0;
+											}
 										}
 									}
 								}
@@ -3346,6 +3382,10 @@ class PlayState extends MusicBeatState
 								if (daNote.isParent)
 								{
 									health -= 0.15; // give a health punishment for failing a LN
+									if (curSong == "Izofunk"){
+										trace("Instakill");
+										health = 0;
+									}
 									trace("hold fell over at the start");
 									for (i in daNote.children)
 									{
@@ -3362,6 +3402,10 @@ class PlayState extends MusicBeatState
 										&& daNote.spotInLine != daNote.parent.children.length)
 									{
 										health -= 0.25; // give a health punishment for failing a LN
+										if (curSong == "Izofunk"){
+											trace("Instakill");
+											health = 0;
+										}
 										trace("hold fell over at " + daNote.spotInLine);
 										for (i in daNote.parent.children)
 										{
@@ -3376,6 +3420,10 @@ class PlayState extends MusicBeatState
 									else
 									{
 										health -= 0.2;
+										if (curSong == "Izofunk"){
+												trace("Instakill");
+												health = 0;
+										}
 									}
 								}
 							}
@@ -3642,7 +3690,9 @@ class PlayState extends MusicBeatState
 				score = -300;
 				combo = 0;
 				misses++;
-				health -= 0.16;
+				if (curSong != 'Izofunk'){
+					health -= 0.16;
+				}
 				ss = false;
 				shits++;
 				if (FlxG.save.data.accuracyMod == 0)
@@ -3650,7 +3700,9 @@ class PlayState extends MusicBeatState
 			case 'bad':
 				daRating = 'bad';
 				score = 0;
-				health -= 0.08;
+				if (curSong != 'Izofunk'){
+					health -= 0.08;
+				}
 				ss = false;
 				bads++;
 				if (FlxG.save.data.accuracyMod == 0)
@@ -4743,7 +4795,14 @@ class PlayState extends MusicBeatState
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
-
+		
+		/*if(curSong == "Izofunk"){
+			healthBar.alpha = 0;
+			healthBarBG.alpha = 0;
+			iconP2.alpha = 0;
+			iconP1.alpha = 0;
+		}*/
+		
 		if (curBeat % gfSpeed == 0)
 		{
 			gf.dance();

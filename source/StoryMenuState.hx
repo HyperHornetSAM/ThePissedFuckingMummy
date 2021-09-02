@@ -55,6 +55,8 @@ class StoryMenuState extends MusicBeatState
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
+	
+	var isCutscene:Bool = false;
 
 	function unlockWeeks():Array<Bool>
 	{
@@ -301,7 +303,7 @@ class StoryMenuState extends MusicBeatState
 					changeDifficulty(-1);
 			}
 
-			if (controls.ACCEPT)
+			if (controls.ACCEPT && !isCutscene)
 			{
 				selectWeek();
 			}
@@ -360,7 +362,7 @@ class StoryMenuState extends MusicBeatState
 			PlayState.SONG = Song.conversionChecks(Song.loadFromJson(poop, PlayState.storyPlaylist[0]));
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
-			var isCutscene:Bool = false;
+			//var isCutscene:Bool = false;
 			var video:MP4Handler = new MP4Handler();
 
 			if (curWeek == 0 && !isCutscene) // Checks if the current week is Tutorial.

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Izotope_arrows.png">
+	<!-- Created with Adobe Animate version 21.0.8.42666 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Down hold end instance 10000" x="0" y="0" width="51" height="64"/>
+	<SubTexture name="Down hold piece instance 10000" x="61" y="0" width="51" height="44"/>
+	<SubTexture name="Down instance 10000" x="122" y="0" width="158" height="154"/>
+	<SubTexture name="Left end hold instance 10000" x="290" y="0" width="51" height="64"/>
+	<SubTexture name="Left hold piece instance 10000" x="351" y="0" width="51" height="44"/>
+	<SubTexture name="Left instance 10000" x="0" y="164" width="154" height="157"/>
+	<SubTexture name="Right instance 10000" x="164" y="164" width="154" height="157"/>
+	<SubTexture name="Up hold end instance 10000" x="328" y="164" width="51" height="64"/>
+	<SubTexture name="Up hold piece instance 10000" x="389" y="164" width="51" height="44"/>
+	<SubTexture name="Up instance 10000" x="0" y="331" width="157" height="154"/>
+	<SubTexture name="right hold end instance 10000" x="167" y="331" width="51" height="64"/>
+	<SubTexture name="right hold piece instance 10000" x="228" y="331" width="51" height="44"/>
+</TextureAtlas>

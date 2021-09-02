@@ -34,6 +34,8 @@ class Note extends FlxSprite
 	public var isSustainNote:Bool = false;
 	public var originColor:Int = 0; // The sustain note's original note's color
 	public var noteSection:Int = 0;
+	
+	public var IzoNotes:Int = 0;
 
 	public var isAlt:Bool = false;
 
@@ -65,7 +67,7 @@ class Note extends FlxSprite
 
 	public var children:Array<Note> = [];
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false, ?isAlt:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false, ?isAlt:Bool = false, ?IzoNotes = 0)
 	{
 		super();
 
@@ -152,19 +154,38 @@ class Note extends FlxSprite
 					setGraphicSize(widthSize);
 					updateHitbox();
 				default:
-					frames = Paths.getSparrowAtlas('NOTE_assets');
+					switch(IzoNotes){
+						case 0:
+						{
+							frames = Paths.getSparrowAtlas('NOTE_assets');
+							for (i in 0...4)
+							{
+								animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + ' alone'); // Normal notes
+								animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
+								animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
+							}
 
-					for (i in 0...4)
-					{
-						animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + ' alone'); // Normal notes
-						animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
-						animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
-					}
-
-					setGraphicSize(Std.int(width * 0.7));
-					updateHitbox();
+							setGraphicSize(Std.int(width * 0.7));
+							updateHitbox();
 					
-					antialiasing = FlxG.save.data.antialiasing;
+							antialiasing = FlxG.save.data.antialiasing;
+						}
+						case 1:
+						{
+							frames = Paths.getSparrowAtlas('Izotope_arrows');
+							for (i in 0...4)
+							{
+								animation.addByPrefix(dataColor[i] + 'Scroll', dataColor[i] + ' alone'); // Normal notes
+								animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
+								animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
+							}
+
+							setGraphicSize(Std.int(width * 0.7));
+							updateHitbox();
+						
+							antialiasing = FlxG.save.data.antialiasing;
+						}
+					}
 			}
 		}
 

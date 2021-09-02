@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="crumbling.png">
+	<!-- mmmmm -->
+	<SubTexture name="crumbling10000" x="0" y="0" width="407" height="181"/>
+	<SubTexture name="crumbling10001" x="407" y="0" width="407" height="181"/>
+	<SubTexture name="crumbling10002" x="814" y="0" width="407" height="181"/>
+	<SubTexture name="crumbling10003" x="1221" y="0" width="407" height="181"/>
+	<SubTexture name="crumbling10004" x="1628" y="0" width="407" height="181"/>
+	<SubTexture name="crumbling10005" x="2035" y="0" width="407" height="181"/>
+	<SubTexture name="crumbling10006" x="2442" y="0" width="407" height="181"/>
+
+	<SubTexture name="crumbling10007" x="0" y="181" width="407" height="181"/>
+	<SubTexture name="crumbling10008" x="407" y="181" width="407" height="181"/>
+	<SubTexture name="crumbling10009" x="814" y="181" width="407" height="181"/>
+	<SubTexture name="crumbling10010" x="1221" y="181" width="407" height="181"/>
+	<SubTexture name="crumbling10011" x="1628" y="181" width="407" height="181"/>
+	<SubTexture name="crumbling10012" x="2035" y="181" width="407" height="181"/>
+	<SubTexture name="crumbling10013" x="2442" y="181" width="407" height="181"/>
+
+	<SubTexture name="crumbling10014" x="0" y="362" width="407" height="181"/>
+	<SubTexture name="crumbling10015" x="407" y="362" width="407" height="181"/>
+	<SubTexture name="crumbling10016" x="814" y="362" width="407" height="181"/>
+	<SubTexture name="crumbling10017" x="1221" y="362" width="407" height="181"/>
+	<SubTexture name="crumbling10018" x="1628" y="362" width="407" height="181"/>
+	<SubTexture name="crumbling10019" x="2035" y="362" width="407" height="181"/>
+	<SubTexture name="crumbling10020" x="2442" y="362" width="407" height="181"/>
+
+	<SubTexture name="crumbling10021" x="0" y="543" width="407" height="181"/>
+	<SubTexture name="crumbling10022" x="407" y="543" width="407" height="181"/>
+	<SubTexture name="crumbling10023" x="814" y="543" width="407" height="181"/>
+	<SubTexture name="crumbling10024" x="1221" y="543" width="407" height="181"/>
+	<SubTexture name="crumbling10025" x="1628" y="543" width="407" height="181"/>
+	<SubTexture name="crumbling10026" x="2035" y="543" width="407" height="181"/>
+	<SubTexture name="crumbling10027" x="2442" y="543" width="407" height="181"/>
+</TextureAtlas>
