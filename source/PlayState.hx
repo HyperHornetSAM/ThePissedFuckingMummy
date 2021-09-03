@@ -184,6 +184,7 @@ class PlayState extends MusicBeatState
 
 	public var iconP1:HealthIcon; // making these public again because i may be stupid
 	public var iconP2:HealthIcon; // what could go wrong?
+	public var crumbleEffect:FlxSprite = new FlxSprite();
 	public var camHUD:FlxCamera;
 	public var camSustains:FlxCamera;
 	public var camNotes:FlxCamera;
@@ -548,7 +549,7 @@ class PlayState extends MusicBeatState
 							add(torch_2);
 						}
 						
-						torch_3 = new FlxSprite(800, 350);
+						torch_3 = new FlxSprite(910, 350);
 						torch_3.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
 						torch_3.animation.addByPrefix('torchanim', "torch", 24, false);
 						torch_3.antialiasing = FlxG.save.data.antialiasing;
@@ -560,7 +561,7 @@ class PlayState extends MusicBeatState
 							add(torch_3);
 						}
 						
-						torch_4 = new FlxSprite(1200, 350);
+						torch_4 = new FlxSprite(1310, 350);
 						torch_4.frames = Paths.getSparrowAtlas('bg/torch', 'shared');
 						torch_4.animation.addByPrefix('torchanim', "torch", 24, false);
 						torch_4.antialiasing = FlxG.save.data.antialiasing;
@@ -1314,7 +1315,14 @@ class PlayState extends MusicBeatState
 		botPlayState.borderQuality = 2;
 		if (PlayStateChangeables.botPlay && !loadRep)
 			add(botPlayState);
-
+			
+		crumbleEffect.frames = Paths.getSparrowAtlas('crumbling', 'shared');
+		crumbleEffect.animation.addByPrefix('crumble','crumbling', 24, true);
+		crumbleEffect.antialiasing = true;
+		
+		add(crumbleEffect);
+		crumbleEffect.animation.play('crumble');
+		
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
 		add(iconP1);
@@ -1322,10 +1330,15 @@ class PlayState extends MusicBeatState
 		iconP2 = new HealthIcon(SONG.player2, false);
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		add(iconP2);
+		crumbleEffect.y = healthBar.y - (iconP1.height / 2);
+		crumbleEffect.setGraphicSize(Std.int(crumbleEffect.width * .6));
+		
+		
 		
 		if(curSong == "Izofunk"){
 			healthBar.alpha = 0;
 			healthBarBG.alpha = 0;
+			crumbleEffect.alpha = 0;
 			iconP2.alpha = 0;
 			iconP1.alpha = 0;
 			dad.alpha = .5;
@@ -1335,6 +1348,7 @@ class PlayState extends MusicBeatState
 		notes.cameras = [camHUD];
 		healthBar.cameras = [camHUD];
 		healthBarBG.cameras = [camHUD];
+		crumbleEffect.cameras = [camHUD];
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
@@ -2575,19 +2589,23 @@ class PlayState extends MusicBeatState
 
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50)));
+		//crumbleEffect.setGraphicSize(Std.int(crumbleEffect.width * .6));
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
+		crumbleEffect.updateHitbox();
 
 		var iconOffset:Int = 26;
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		crumbleEffect.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset * 4.5);
 		
 		if (SONG.player2 == 'mummy'){
 			iconP2.scale.set(.95, .95);
 			if (IconOffsetApplied == false){
 				iconP2.y -= 20;
+				//crumbleEffect.y += 20;
 				IconOffsetApplied = true;
 			}
 		}
@@ -3692,6 +3710,10 @@ class PlayState extends MusicBeatState
 				misses++;
 				if (curSong != 'Izofunk'){
 					health -= 0.16;
+				}
+				else{
+					trace("Instakill");
+					health = 0;
 				}
 				ss = false;
 				shits++;
@@ -4828,11 +4850,25 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 			dad.playAnim('cheer', true);
 		}
+		if (curSong == 'Pharoh-Fury')
+		{
+			switch(curBeat)
+			{
+				case 448:
+				{
+					FlxG.camera.shake(0.03,2);
+				}
+			}
+		}
 		if (curSong == 'Midlife-Tantrum')
 		{
 			switch(curBeat)
 			{
-				case 290: izotopeVanish();
+				case 290:
+				{
+					izotopeVanish();
+					FlxG.camera.shake(0.03,1.3);
+				}
 			}
 		}
 		switch (curStage)
