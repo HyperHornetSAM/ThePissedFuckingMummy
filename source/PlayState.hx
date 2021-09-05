@@ -1807,7 +1807,13 @@ class PlayState extends MusicBeatState
 			ana.hit = false;
 			ana.hitJudge = "shit";
 			ana.nearestNote = [];
-			health -= 0.20;
+			if (curSong != 'Izofunk'){
+					health -= 0.20;
+				}
+			else{
+				trace("Instakill");
+				health = 0;
+			}
 		}
 	}
 
@@ -4850,7 +4856,7 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 			dad.playAnim('cheer', true);
 		}
-		if (curSong == 'Pharoh-Fury')
+		if (curSong == 'Pharaoh-Fury')
 		{
 			switch(curBeat)
 			{
